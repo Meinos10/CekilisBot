@@ -1,4 +1,4 @@
-from pyrogram import Client
+from pyrogram import Client, idle
 from pyromod import listen
 import os
 from config import *
@@ -23,5 +23,6 @@ Bot = Client(
 
 
 sil()
+Bot.start()
 print("Bot çalışıyor!")
-Bot.run()
+idle()

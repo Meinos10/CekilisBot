@@ -37,6 +37,7 @@ async def check(client, chat_id, message_id, user_id):
                 print(e)
                 pass
             await asyncio.sleep(kalan.seconds)
+            katılanlar = str(open("./cekilis/database/"+str(chat_id)+"/katılanlar.txt", "r", encoding="utf-8").read()).split("\n")
             winner_users = ""
             n = 1
             for i in range(int(kisi)):
@@ -52,7 +53,7 @@ async def check(client, chat_id, message_id, user_id):
                 await client.edit_message_text(
                     chat_id=chat_id,
                     message_id=message_id,
-                    text=f"**{konu} 🎉\n\n`Süre Bitti!`\n\nKazananlar;\n\n{winner_users}**"
+                    text=f"**{konu} 🎉\n\n`Süre Bitti!`\n\nKazananlar;\n\n{winner_users}\nToplam katılımcı: `{len(katılanlar)}`**"
                 )
             except Exception as e:
                 print(e)

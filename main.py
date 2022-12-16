@@ -10,7 +10,7 @@ def sil():
         os.system("clear")
 
 if not "database" in os.listdir("./cekilis"):
-    os.system("mkdir database")
+    os.system("mkdir cekilis/database")
    
 if "cekilis.session" in os.listdir():
     os.remove("cekilis.session")

@@ -13,13 +13,13 @@ async def check(client, chat_id, message_id, user_id):
         katılanlar = str(open("./cekilis/database/"+str(chat_id)+"/katılanlar.txt", "r", encoding="utf-8").read()).split("\n")
         if "" in katılanlar:
             katılanlar.remove("")
-        if not kalan.seconds < 10:
-            dakika = kalan.seconds // 60
+        if not (kalan.seconds + 10800) < 10: # Sunucu saatindeki 3 saatlik arayı dengelemek için !
+            dakika = (kalan.seconds + 10800) // 60
             try:
                 await client.edit_message_text(
                     chat_id=chat_id,
                     message_id=message_id,
-                    text=f"**{konu} 🎉\n\nKazanacak kişi sayısı: `{kisi}`\n\nKalan süre: `{dakika}` dakika `{kalan.seconds - (dakika*60)}` saniye\n\nToplam katılımcı: `{len(katılanlar)}`**",
+                    text=f"**{konu} 🎉\n\nKazanacak kişi sayısı: `{kisi}`\n\nKalan süre: `{dakika}` dakika `{(kalan.seconds + 10800) - (dakika*60)}` saniye\n\nToplam katılımcı: `{len(katılanlar)}`**",
                     reply_markup=katil(user_id)
                 )
             except Exception as e:
@@ -30,7 +30,7 @@ async def check(client, chat_id, message_id, user_id):
                 await client.edit_message_text(
                     chat_id=chat_id,
                     message_id=message_id,
-                    text=f"**{konu} 🎉\n\nKazanacak kişi sayısı: `{kisi}`\n\nKalan süre: `{kalan.seconds}` saniye\n\nToplam katılımcı: `{len(katılanlar)}`**",
+                    text=f"**{konu} 🎉\n\nKazanacak kişi sayısı: `{kisi}`\n\nKalan süre: `{kalan.seconds + 10800}` saniye\n\nToplam katılımcı: `{len(katılanlar)}`**",
                     reply_markup=katil(user_id)
                 )
             except Exception as e:

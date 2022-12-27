@@ -1,4 +1,4 @@
-api_id = # my.telegram.org/app app_id
+api_id = # my.telegram.org/app app_id 
 api_hash = "" # my.telegram.org/app api_hash
 token = "" # Telegram Bot token
 
